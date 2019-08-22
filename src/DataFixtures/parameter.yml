@@ -1,0 +1,14 @@
+parameters:
+  # Configuración de la base de datos propia de la aplicación
+  # mprod_rupp
+  database_host: srvpmysql3e@santafe.gov.ar
+  database_port: 3306
+  database_name: mprod_rupp
+  database_user: mprod_sp_rupp
+  database_password: ( ... )
+
+  mailer_transport: smtp
+  mailer_host: correo.santafe.gov.ar
+  mailer_user: null
+  mailer_password: null
+  secret: 2474fa53cf18a3fa7c197b5835c5e10f9
