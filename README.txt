@@ -1,8 +1,62 @@
+#-----------------------Clonando este proyecto, ya tiene configurado------------------------------#
+
+Se asume que esta instalado:
+    php version > 7.3,
+    composer
+    docker
+
+Symfony 4
+EasyAdmin
+ApiPlatform
+
+1) Crear Base de datos:
+    CREATE DATABASE `symfony4jwt` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci */;
+    1.1) Modificar .env file y colocar el nombre de la db y host
+        DATABASE_URL=mysql://root:root@docker_db_1:3306/symfony4jwt
+2) Loguearnos al docker donde esta la app (docker_web733_1)
+    docker exec -it docker_web733_1 /bin/bash
+
+3) Dentro del container ejecutar:
+    $ composer update
+    3.1 Generar archivos de migracion
+            php bin/console make:migration
+
+     3.2 Ejecuar migraciones
+            php bin/console doctrine:migrations:migrate
+4) Crear el primer User con Postman:
+
+    Url=http://localhost:83/symfony4_jwt_base/public/index.php/api/users
+    Body Json=
+    {
+      "username": "abrusut2212",
+      "password": "Aa1234562",
+      "retypedPassword":"Aa1234562",
+      "fullname": "andres brusutti",
+      "name": "andres",
+      "email": "andres2212@gmail.com",
+      "enabled": true
+    }
+
+
+Para probar login:
+ POST URL = http://localhost:83/symfony4_jwt_base/public/index.php/api/login_check
+
+ body json =
+ {
+   "username": "abrusut2212",
+   "password": "Aa1234562"
+ }
+
+
+
+#-------------ACONTINUACION SE DETALLAN TODOS LOS PASOS HECHOS PARA CONFIGURAR EL PROYECTO---------#
+
 #-----------------------Crear proyecto Symfony 4 - EasyAdmin - Api Platform -----------------------#
 
 Se asume que esta instalado:
     php version > 7.3,
     composer
+    docker
 
 NOTA: Las URL que veran a continuacion se tratan symfony en docker con php 7.3 expuesto en puerto :83
 
@@ -11,8 +65,9 @@ NOTA: Las URL que veran a continuacion se tratan symfony en docker con php 7.3 e
 3) composer require symfony/orm-pack
 4) composer require symfony/maker-bundle --dev
 
-    Prueba: http://localhost:83/s4apiPlatform/project/
-            http://localhost:83/s4apiPlatform/project/public/index.php/blog/1
+
+    Prueba: http://localhost:83/symfony4_jwt_base
+           http://localhost:83/symfony4_jwt_base/public/index.php/blog/1
 
 5) Generando entitys:
 
@@ -48,7 +103,7 @@ NOTA: Las URL que veran a continuacion se tratan symfony en docker con php 7.3 e
     #        # List the entity class name you want to manage
             - App\Entity\BlogPost
 3) Test plugin:
-    http://localhost:83/s4apiPlatform/project/public/index.php/admin/?action=list&entity=BlogPost
+    http://localhost:83/symfony4_jwt_base/public/index.php/admin/?action=list&entity=BlogPost
 
 #-------------------------------------------------------------------------------------------------#
 
@@ -63,7 +118,7 @@ NOTA: Las URL que veran a continuacion se tratan symfony en docker con php 7.3 e
      */
     class BlogPost
 
-
+3) Api Doc: http://localhost:83/symfony4_jwt_base/public/index.php/api/docs
 
 #---------------------------------------------------------------------------------------------------#
 
@@ -161,6 +216,11 @@ Y con itemOperation "get" le decimos que solo get de 1 item (no post, ni put)
     5.3) Darle permisos de lectura al privatepm en config/jwt/
         $ chmod 644 private.pem
 
+    5.4) Crear un .htaccess en la carpeta /public con el siguiente contenido.
+        Esto se hace para que apache no descarte la cabecera de Authorization
+        RewriteEngine On
+        RewriteCond %{HTTP:Authorization} ^(.*)
+        RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
 
 6) Configurar User Provider
     read: https://github.com/lexik/LexikJWTAuthenticationBundle/blob/master/Resources/doc/index.md#configuration
