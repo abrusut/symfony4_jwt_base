@@ -2,194 +2,114 @@
 <project version="4">
   <component name="PhpIncludePathManager">
     <include_path>
-      <path value="$PROJECT_DIR$/project/vendor/symfony/finder" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/flex" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/event-dispatcher-contracts" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/dependency-injection" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/polyfill-intl-idn" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/polyfill-php72" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/polyfill-php73" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/filesystem" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/framework-bundle" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/yaml" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/var-exporter" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/config" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/doctrine-bridge" />
-      <path value="$PROJECT_DIR$/project/vendor/jdorn/sql-formatter" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/routing" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/http-foundation" />
-      <path value="$PROJECT_DIR$/project/vendor/zendframework/zend-eventmanager" />
-      <path value="$PROJECT_DIR$/project/vendor/zendframework/zend-code" />
-      <path value="$PROJECT_DIR$/project/vendor/sensio/framework-extra-bundle" />
-      <path value="$PROJECT_DIR$/project/vendor/doctrine/cache" />
-      <path value="$PROJECT_DIR$/project/vendor/doctrine/inflector" />
-      <path value="$PROJECT_DIR$/project/vendor/doctrine/event-manager" />
-      <path value="$PROJECT_DIR$/project/vendor/doctrine/lexer" />
-      <path value="$PROJECT_DIR$/project/vendor/doctrine/doctrine-migrations-bundle" />
-      <path value="$PROJECT_DIR$/project/vendor/doctrine/doctrine-bundle" />
-      <path value="$PROJECT_DIR$/project/vendor/doctrine/reflection" />
-      <path value="$PROJECT_DIR$/project/vendor/composer" />
-      <path value="$PROJECT_DIR$/project/vendor/doctrine/collections" />
-      <path value="$PROJECT_DIR$/project/vendor/doctrine/annotations" />
-      <path value="$PROJECT_DIR$/project/vendor/doctrine/instantiator" />
-      <path value="$PROJECT_DIR$/project/vendor/doctrine/common" />
-      <path value="$PROJECT_DIR$/project/vendor/doctrine/persistence" />
-      <path value="$PROJECT_DIR$/project/vendor/doctrine/doctrine-cache-bundle" />
-      <path value="$PROJECT_DIR$/project/vendor/doctrine/orm" />
-      <path value="$PROJECT_DIR$/project/vendor/ocramius/package-versions" />
-      <path value="$PROJECT_DIR$/project/vendor/ocramius/proxy-manager" />
-      <path value="$PROJECT_DIR$/project/vendor/nikic/php-parser" />
-      <path value="$PROJECT_DIR$/project/vendor/doctrine/dbal" />
-      <path value="$PROJECT_DIR$/project/vendor/doctrine/migrations" />
-      <path value="$PROJECT_DIR$/project/vendor/psr/log" />
-      <path value="$PROJECT_DIR$/project/vendor/psr/container" />
-      <path value="$PROJECT_DIR$/project/vendor/psr/cache" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/debug" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/console" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/stopwatch" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/dotenv" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/orm-pack" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/maker-bundle" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/event-dispatcher" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/polyfill-mbstring" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/service-contracts" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/cache-contracts" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/mime" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/cache" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/http-kernel" />
-      <path value="$PROJECT_DIR$/project/vendor/webmozart/assert" />
-      <path value="$PROJECT_DIR$/project/vendor/phpdocumentor/reflection-common" />
-      <path value="$PROJECT_DIR$/project/vendor/phpdocumentor/reflection-docblock" />
-      <path value="$PROJECT_DIR$/project/vendor/phpdocumentor/type-resolver" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/property-info" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/inflector" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/serializer-pack" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/serializer" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/property-access" />
-      <path value="$PROJECT_DIR$/project/vendor/doctrine/data-fixtures" />
-      <path value="$PROJECT_DIR$/project/vendor/doctrine/doctrine-fixtures-bundle" />
-      <path value="$PROJECT_DIR$/project/vendor/twig/extensions" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/twig-bridge" />
-      <path value="$PROJECT_DIR$/project/vendor/twig/twig" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/translation-contracts" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/asset" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/expression-language" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/translation" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/polyfill-intl-icu" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/twig-bundle" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/validator" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/security-bundle" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/security-http" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/security-csrf" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/security-core" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/security-guard" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/options-resolver" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/intl" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/form" />
-      <path value="$PROJECT_DIR$/project/vendor/pagerfanta/pagerfanta" />
-      <path value="$PROJECT_DIR$/project/vendor/easycorp/easyadmin-bundle" />
-      <path value="$PROJECT_DIR$/project/vendor/fig/link-util" />
-      <path value="$PROJECT_DIR$/project/vendor/symfony/web-link" />
-      <path value="$PROJECT_DIR$/project/vendor/psr/link" />
-      <path value="$PROJECT_DIR$/project/vendor/willdurand/negotiation" />
-      <path value="$PROJECT_DIR$/project/vendor/nelmio/cors-bundle" />
-      <path value="$PROJECT_DIR$/project/vendor/api-platform/core" />
-      <path value="$PROJECT_DIR$/project/vendor/api-platform/api-pack" />
-      <path value="$PROJECT_DIR$/project/vendor/fzaninotto/faker" />
-      <path value="$PROJECT_DIR$/project/vendor/namshi/jose" />
-      <path value="$PROJECT_DIR$/project/vendor/lexik/jwt-authentication-bundle" />
-      <path value="$PROJECT_DIR$/project/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/vendor/namshi/jose" />
+      <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/vendor/symfony/templating" />
+      <path value="$PROJECT_DIR$/vendor/jms/metadata" />
+      <path value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle" />
+      <path value="$PROJECT_DIR$/vendor/behat/transliterator" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/fig/link-util" />
+      <path value="$PROJECT_DIR$/vendor/psr/link" />
+      <path value="$PROJECT_DIR$/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/vendor/twig/twig" />
+      <path value="$PROJECT_DIR$/vendor/twig/extensions" />
+      <path value="$PROJECT_DIR$/vendor/jdorn/sql-formatter" />
+      <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/vendor/nelmio/cors-bundle" />
+      <path value="$PROJECT_DIR$/vendor/sensio/framework-extra-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/var-exporter" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/vendor/symfony/form" />
+      <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/symfony/property-info" />
+      <path value="$PROJECT_DIR$/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/vendor/symfony/expression-language" />
+      <path value="$PROJECT_DIR$/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/vendor/symfony/doctrine-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/config" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-csrf" />
+      <path value="$PROJECT_DIR$/vendor/lexik/jwt-authentication-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/vendor/symfony/debug" />
+      <path value="$PROJECT_DIR$/vendor/symfony/dependency-injection" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/vendor/symfony/twig-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/asset" />
+      <path value="$PROJECT_DIR$/vendor/symfony/web-link" />
+      <path value="$PROJECT_DIR$/vendor/symfony/validator" />
+      <path value="$PROJECT_DIR$/vendor/symfony/dotenv" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-guard" />
+      <path value="$PROJECT_DIR$/vendor/symfony/cache" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/vendor/symfony/serializer-pack" />
+      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/vendor/symfony/framework-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/cache-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-icu" />
+      <path value="$PROJECT_DIR$/vendor/symfony/twig-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-http" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-core" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/vendor/symfony/flex" />
+      <path value="$PROJECT_DIR$/vendor/symfony/orm-pack" />
+      <path value="$PROJECT_DIR$/vendor/symfony/intl" />
+      <path value="$PROJECT_DIR$/vendor/symfony/maker-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/options-resolver" />
+      <path value="$PROJECT_DIR$/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/vendor/symfony/stopwatch" />
+      <path value="$PROJECT_DIR$/vendor/symfony/inflector" />
+      <path value="$PROJECT_DIR$/vendor/symfony/property-access" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/serializer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-migrations-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/reflection" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/collections" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/annotations" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/common" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/orm" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/persistence" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-cache-bundle" />
+      <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/migrations" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
+      <path value="$PROJECT_DIR$/vendor/easycorp/easyadmin-bundle" />
+      <path value="$PROJECT_DIR$/vendor/ocramius/package-versions" />
+      <path value="$PROJECT_DIR$/vendor/ocramius/proxy-manager" />
+      <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/vendor/pagerfanta/pagerfanta" />
+      <path value="$PROJECT_DIR$/vendor/willdurand/negotiation" />
+      <path value="$PROJECT_DIR$/vendor/api-platform/core" />
+      <path value="$PROJECT_DIR$/vendor/api-platform/api-pack" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/vendor/vich/uploader-bundle" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/vendor/zendframework/zend-eventmanager" />
+      <path value="$PROJECT_DIR$/vendor/zendframework/zend-code" />
+      <path value="$PROJECT_DIR$/vendor/symfony/monolog-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/monolog-bridge" />
+      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
     </include_path>
-  </component>
-  <component name="PhpInterpreters">
-    <interpreters>
-      <interpreter id="e59590ec-a2d8-4c11-b0d5-53adae95efba" name="docker_web733:latest" home="docker://DATA" debugger_id="php.debugger.XDebug">
-        <remote_data DOCKER_ACCOUNT_NAME="Docker" DOCKER_IMAGE_NAME="docker_web733:latest" DOCKER_REMOTE_PROJECT_PATH="/opt/project" INTERPRETER_PATH="php" HELPERS_PATH="/opt/.phpstorm_helpers" INITIALIZED="false" VALID="true" RUN_AS_ROOT_VIA_SUDO="false" />
-      </interpreter>
-    </interpreters>
-  </component>
-  <component name="PhpInterpretersPhpInfoCache">
-    <phpInfoCache>
-      <interpreter name="docker_web733:latest">
-        <phpinfo binary_type="PHP" php_cli="/usr/bin/php7.3" path_separator=":" version="7.3.7-2+0~20190725.42+debian9~1.gbp848ca5">
-          <additional_php_ini>/etc/php/7.3/cli/conf.d/10-mysqlnd.ini, /etc/php/7.3/cli/conf.d/10-opcache.ini, /etc/php/7.3/cli/conf.d/10-pdo.ini, /etc/php/7.3/cli/conf.d/15-xml.ini, /etc/php/7.3/cli/conf.d/20-apcu.ini, /etc/php/7.3/cli/conf.d/20-calendar.ini, /etc/php/7.3/cli/conf.d/20-ctype.ini, /etc/php/7.3/cli/conf.d/20-curl.ini, /etc/php/7.3/cli/conf.d/20-dom.ini, /etc/php/7.3/cli/conf.d/20-exif.ini, /etc/php/7.3/cli/conf.d/20-fileinfo.ini, /etc/php/7.3/cli/conf.d/20-ftp.ini, /etc/php/7.3/cli/conf.d/20-gd.ini, /etc/php/7.3/cli/conf.d/20-gettext.ini, /etc/php/7.3/cli/conf.d/20-iconv.ini, /etc/php/7.3/cli/conf.d/20-intl.ini, /etc/php/7.3/cli/conf.d/20-json.ini, /etc/php/7.3/cli/conf.d/20-mbstring.ini, /etc/php/7.3/cli/conf.d/20-mysqli.ini, /etc/php/7.3/cli/conf.d/20-pdo_mysql.ini, /etc/php/7.3/cli/conf.d/20-pdo_sqlite.ini, /etc/php/7.3/cli/conf.d/20-phar.ini, /etc/php/7.3/cli/conf.d/20-posix.ini, /etc/php/7.3/cli/conf.d/20-readline.ini, /etc/php/7.3/cli/conf.d/20-shmop.ini, /etc/php/7.3/cli/conf.d/20-simplexml.ini, /etc/php/7.3/cli/conf.d/20-soap.ini, /etc/php/7.3/cli/conf.d/20-sockets.ini, /etc/php/7.3/cli/conf.d/20-sqlite3.ini, /etc/php/7.3/cli/conf.d/20-sysvmsg.ini, /etc/php/7.3/cli/conf.d/20-sysvsem.ini, /etc/php/7.3/cli/conf.d/20-sysvshm.ini, /etc/php/7.3/cli/conf.d/20-tokenizer.ini, /etc/php/7.3/cli/conf.d/20-wddx.ini, /etc/php/7.3/cli/conf.d/20-xdebug.ini, /etc/php/7.3/cli/conf.d/20-xmlreader.ini, /etc/php/7.3/cli/conf.d/20-xmlwriter.ini, /etc/php/7.3/cli/conf.d/20-xsl.ini, /etc/php/7.3/cli/conf.d/20-zip.ini, /etc/php/7.3/cli/conf.d/25-apcu_bc.ini</additional_php_ini>
-          <configuration_file>/etc/php/7.3/cli/php.ini</configuration_file>
-          <configuration_options>
-            <configuration_option name="include_path" value=".:/usr/share/php" />
-          </configuration_options>
-          <debuggers>
-            <debugger_info debugger="xdebug" debugger_version="2.7.1">
-              <debug_extensions />
-            </debugger_info>
-          </debuggers>
-          <loaded_extensions>
-            <extension name="Core" />
-            <extension name="PDO" />
-            <extension name="Phar" />
-            <extension name="Reflection" />
-            <extension name="SPL" />
-            <extension name="SimpleXML" />
-            <extension name="Zend OPcache" />
-            <extension name="apc" />
-            <extension name="apcu" />
-            <extension name="calendar" />
-            <extension name="ctype" />
-            <extension name="curl" />
-            <extension name="date" />
-            <extension name="dom" />
-            <extension name="exif" />
-            <extension name="fileinfo" />
-            <extension name="filter" />
-            <extension name="ftp" />
-            <extension name="gd" />
-            <extension name="gettext" />
-            <extension name="hash" />
-            <extension name="iconv" />
-            <extension name="intl" />
-            <extension name="json" />
-            <extension name="libxml" />
-            <extension name="mbstring" />
-            <extension name="mysqli" />
-            <extension name="mysqlnd" />
-            <extension name="openssl" />
-            <extension name="pcntl" />
-            <extension name="pcre" />
-            <extension name="pdo_mysql" />
-            <extension name="pdo_sqlite" />
-            <extension name="posix" />
-            <extension name="readline" />
-            <extension name="session" />
-            <extension name="shmop" />
-            <extension name="soap" />
-            <extension name="sockets" />
-            <extension name="sodium" />
-            <extension name="sqlite3" />
-            <extension name="standard" />
-            <extension name="sysvmsg" />
-            <extension name="sysvsem" />
-            <extension name="sysvshm" />
-            <extension name="tokenizer" />
-            <extension name="wddx" />
-            <extension name="xdebug" />
-            <extension name="xml" />
-            <extension name="xmlreader" />
-            <extension name="xmlwriter" />
-            <extension name="xsl" />
-            <extension name="zip" />
-            <extension name="zlib" />
-          </loaded_extensions>
-        </phpinfo>
-      </interpreter>
-    </phpInfoCache>
-  </component>
-  <component name="PhpProjectServersManager">
-    <servers>
-      <server host="localhost" id="442218cf-bed8-4af0-9158-caebaa25222e" name="localhost" port="83" use_path_mappings="true">
-        <path_mappings>
-          <mapping local-root="$PROJECT_DIR$/project" remote-root="/var/www/html/s4apiPlatform/project" />
-        </path_mappings>
-      </server>
-    </servers>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
 </project>

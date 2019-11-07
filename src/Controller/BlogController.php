@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\BlogPost;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -61,7 +62,7 @@ class BlogController extends AbstractController
     /**
      * @Route("/add", name="blog_add", methods={"POST"})
      */
-    public function add(Request $request)
+        public function add(Request $request)
     {
         /** @var Serializer $serializer */
         $serializer = $this->get('serializer');

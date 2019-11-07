@@ -1,62 +1,59 @@
-#-----------------------Clonando este proyecto, ya tiene configurado------------------------------#
+#-------------------   Despues de clonar el proyecto base. ---------------------------------#
 
-Se asume que esta instalado:
-    php version > 7.3,
-    composer
-    docker
+1) Cambiar nombre de Base de Datos y Crearla:
 
-Symfony 4
-EasyAdmin
-ApiPlatform
+    a) Editar archivo .env
+        DATABASE_URL=mysql://root:root@docker_db_1:3306/s4jwtbase
 
-1) Crear Base de datos:
-    CREATE DATABASE `symfony4jwt` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci */;
-    1.1) Modificar .env file y colocar el nombre de la db y host
-        DATABASE_URL=mysql://root:root@docker_db_1:3306/symfony4jwt
-2) Loguearnos al docker donde esta la app (docker_web733_1)
-    docker exec -it docker_web733_1 /bin/bash
+2) Crear migraciones
+    a) Borrar contenido de carpeta src/Migrations
+    b) Ejecutar por consola :
+        php bin/console make:migration
 
-3) Dentro del container ejecutar:
-    $ composer update
-    3.1 Generar archivos de migracion
-            php bin/console make:migration
+3) Ejecutar migraciones
+    a) php bin/console doctrine:migrations:migrate
 
-     3.2 Ejecuar migraciones
-            php bin/console doctrine:migrations:migrate
-4) Crear el primer User con Postman:
+4) Navegar por browser a :
+    http://localhost:83/symfony4_jwt_base/public/
 
-    Url=http://localhost:83/symfony4_jwt_base/public/index.php/api/users
-    Body Json=
+   Si salio ok :
+
+    "Welcome to de API Platform Page"
+5) Load Users and data example
+    a) php bin/console doctrine:fixtures:load
+
+6) Validar si anda JWT ( Solo si se ejecuto el paso 5 )  :
+    a) Opcion con POSTMAN ( o similar  )
+
+    Method: POST
+    URL: http://localhost:83/symfony4_jwt_base/public/index.php/api/login_check
+    BODY  raw (application/json)
     {
-      "username": "abrusut2212",
-      "password": "Aa1234562",
-      "retypedPassword":"Aa1234562",
-      "fullname": "andres brusutti",
-      "name": "andres",
-      "email": "andres2212@gmail.com",
-      "enabled": true
+        "username": "admin",
+        "password": "secret123#"
     }
 
+    b) Opcion con curl
+    curl -d '{"username": "admin","password": "secret123#"}' -H "Content-Type: application/json" -X POST http://localhost:83/symfony4_jwt_base/public/index.php/api/login_check
 
-Para probar login:
- POST URL = http://localhost:83/symfony4_jwt_base/public/index.php/api/login_check
-
- body json =
- {
-   "username": "abrusut2212",
-   "password": "Aa1234562"
- }
+Resultado esperado:
+    En ambos casos debe retornar TOKEN
+    {"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1NzMxMzQ1MzIsImV4cCI6MTU3MzEzODEzMiwicm9sZXMiOlsiUk9MRV9TVVBFUkFETUlOIl0sInVzZXJuYW1lIjoiYWRtaW4ifQ.uqKZFtyDKR4ivXzsMVaopI8f5_mOFJnN2NvtfZVuDyN5L4IkVnRlpm3MM9Phkd9odfBkZJQ3ADe3MpKybK26TRvlk9hYGwXW69MyoVc80SnUvAfQogZDpdYrbgqs-_-1cxFBfnDZM7aBmgxMcGBr91XTLesix8nxz1RpPLqrzqekY0oTKgNJ8QHZzA1qhNEewAaLqO-uObKthysGREQbCOJ84modPV1OaDcJOYeEiMmyuDs1HhCD6Fxb34XVSf0bIJRUsPqv_q-00mH_jas00vZ8UcjOoxvni1K2B3BeXybWwA_rbpoX-uUQHTur-Ix7E3tXUn2MQTKCM5Vfyg9SyYidnHhH7FAMHVvpFc73mZuLL57FkurPHKERLpk29dnecJI8rNr9eNSB_Cxvr2D6GaE8rcNV1txUEM-ci2F-o2p1fC23Cd21ahwy15aRdt56h0zH2jvl8KFoj-WOEagPZZQfalNfWiW3yH5zGarIByAg7oEoR3HMikUf_h9dvRhEmOlKAyFJvs08KMhot1WAsYdu_oHhxwB2A304Gy4wOJsIISoSbAvCMG72JEG6FTJ4JoZjfa2WgRw9StjeBichsJY54EMWfrtZhQS-IPV3f9QYhmBwBJwqSRI0_tJsugjkoUk8WbdaGfNkCm0Dy5JTnG7nysw3OymNMfd0WY9CzxM"}
 
 
 
-#-------------ACONTINUACION SE DETALLAN TODOS LOS PASOS HECHOS PARA CONFIGURAR EL PROYECTO---------#
+
+
+
+
+
+#----------------------------------- Paso a paso de como se creo el proyecto ---------------------------------------#
 
 #-----------------------Crear proyecto Symfony 4 - EasyAdmin - Api Platform -----------------------#
 
 Se asume que esta instalado:
     php version > 7.3,
     composer
-    docker
 
 NOTA: Las URL que veran a continuacion se tratan symfony en docker con php 7.3 expuesto en puerto :83
 
@@ -65,10 +62,8 @@ NOTA: Las URL que veran a continuacion se tratan symfony en docker con php 7.3 e
 3) composer require symfony/orm-pack
 4) composer require symfony/maker-bundle --dev
 
-
-    Prueba: http://localhost:83/symfony4_jwt_base
-           http://localhost:83/symfony4_jwt_base/public/index.php/blog/1
-
+    Prueba: http://localhost:83/symfony4_jwt_base/public/
+            http://localhost:83/symfony4_jwt_base/public/index.php/blog/1
 5) Generando entitys:
 
     php bin/console make:entity
@@ -118,7 +113,7 @@ NOTA: Las URL que veran a continuacion se tratan symfony en docker con php 7.3 e
      */
     class BlogPost
 
-3) Api Doc: http://localhost:83/symfony4_jwt_base/public/index.php/api/docs
+
 
 #---------------------------------------------------------------------------------------------------#
 
@@ -215,12 +210,12 @@ Y con itemOperation "get" le decimos que solo get de 1 item (no post, ni put)
         $ openssl pkey -in config/jwt/private.pem -out config/jwt/public.pem -pubout
     5.3) Darle permisos de lectura al privatepm en config/jwt/
         $ chmod 644 private.pem
-
     5.4) Crear un .htaccess en la carpeta /public con el siguiente contenido.
         Esto se hace para que apache no descarte la cabecera de Authorization
         RewriteEngine On
         RewriteCond %{HTTP:Authorization} ^(.*)
         RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+
 
 6) Configurar User Provider
     read: https://github.com/lexik/LexikJWTAuthenticationBundle/blob/master/Resources/doc/index.md#configuration
@@ -272,3 +267,248 @@ Y con itemOperation "get" le decimos que solo get de 1 item (no post, ni put)
 
         api_login_check:
             path: /api/login_check
+
+#----------------------------------- Swift Mailer Bundle ----------------------------#
+
+Instalar libreria para envio de emails
+
+1) composer require symfony/swiftmailer-bundle
+2) Este bundle agrega una configuracion en el .env y en /config/packages/swiftmail.yaml
+MAILER_URL=gmail://medrasoftnet:PASWORDXXXXXX@localhost
+3) Navegar a https://support.google.com/mail/?p=BadCredentials
+4) habilitar el acceso desde apps menos seguras https://support.google.com/accounts/answer/6010255
+5) Entrar en gmail (correo) y en Configuraciones->Reenvío y correo POP/IMAP
+ habilitar el acceso IMAP
+
+Acceso IMAP:
+(acceder a Gmail desde otros clientes mediante IMAP)
+Más información
+Estado: El acceso IMAP está habilitado
+	Habilitar acceso IMAP
+	Inhabilitar IMAP
+6) Deshabilitar el captcha para la cuenta
+    https://accounts.google.com/DisplayUnlockCaptcha
+   Hacer click en "continuar"
+
+   Exito:
+   Se habilitó el acceso a la cuenta.
+   Intenta volver a acceder a tu Cuenta de Google desde el nuevo dispositivo o aplicación.
+
+#----------------------------------- Vich Uploader Bundle ----------------------------#
+Para upload de imagenes
+1) composer require vich/uploader-bundle
+2) Configure config/packages/vich_uploader.yaml
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        images:
+            uri_prefix: /images
+            upload_destination: '%kernel.project_dir%/public/images'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+3) Add Entity for save image:
+Entity/Image.php:
+        <?php
+
+
+        namespace App\Entity;
+
+        use ApiPlatform\Core\Annotation\ApiResource;
+        use Doctrine\ORM\Mapping as ORM;
+        use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
+        /**
+         * @ORM\Entity()
+         * @Vich\Uploadable()
+         * @ApiResource()
+         */
+        class Image
+        {
+            /**
+             * @ORM\Id()
+             * @ORM\GeneratedValue()
+             * @ORM\Column(type="integer")
+             */
+            private $id;
+
+            /**
+             * "images" => es el nombre de la propiedad configurada en vich_uploader.yaml
+             * "url" debe ser una propiedad de la misma clase
+             * @Vich\UploadableField(mapping="images", fileNameProperty="url")
+             */
+            private $file;
+
+            /**
+             * @ORM\Column(nullable=true)
+             */
+            private $url;
+
+            /**
+             * @return mixed
+             */
+            public function getId()
+            {
+                return $this->id;
+            }
+
+            /**
+             * @param mixed $id
+             */
+            public function setId($id): void
+            {
+                $this->id = $id;
+            }
+
+            /**
+             * @return mixed
+             */
+            public function getFile()
+            {
+                return $this->file;
+            }
+
+            /**
+             * @param mixed $file
+             */
+            public function setFile($file): void
+            {
+                $this->file = $file;
+            }
+
+            /**
+             * @return mixed
+             */
+            public function getUrl()
+            {
+                return $this->url;
+            }
+
+            /**
+             * @param mixed $url
+             */
+            public function setUrl($url): void
+            {
+                $this->url = $url;
+            }
+
+
+        }
+
+4) Run migrations for create Image table
+    a) php bin/console make:migration
+    b) php bin/console doctrine:migrations:migrate
+
+#----------------------------------- API Platform Filters ----------------------------#
+
+Order:
+ * @ApiFilter(
+ *     OrderFilter::class,
+ *     properties={
+ *              "id",
+ *              "published",
+ *              "title"
+ *     },
+ *     arguments={"orderParameterName"="_order"}
+ * )
+
+    {{url}}/api/blog_posts?order[published]=desc
+    {{url}}/api/blog_posts?_order[published]=desc&_order[title]asc
+
+Filter:
+
+Rango:
+    {{url}}/api/blog_posts?id[gt]=652&id[lt]=655 "lt"=> Menor que
+    {{url}}/api/blog_posts?id[gt]=652   --- "gt"=> Mayor que
+
+    {{url}}/api/blog_posts?id[gte]=652&id[lte]=655 "lt"=> Menor o igual que
+    {{url}}/api/blog_posts?id[gte]=652   --- "gt"=> Mayor o igual que
+* @ApiFilter(
+ *     RangeFilter::class,
+ *     properties={
+ *              "id"
+ *     }
+ * )
+
+ Date:
+    {{url}}/api/blog_posts?published[after]=2019-08-25&published[before]=2019-09-1
+
+    {{url}}/api/blog_posts?published[strictly_after]=2019-09-04T02:00:00
+
+     * @ApiFilter(
+     *     DateFilter::class,
+     *     properties={
+     *              "published"
+     *     }
+     * )
+
+
+Search:
+    {{url}}/api/blog_posts?title=alice
+    {{url}}/api/blog_posts?content=Cat
+    {{url}}/api/blog_posts?content=Cat&title=Alice
+
+ * @ApiFilter(
+ *     SearchFilter::class,
+ *     properties={
+            "id": "exact",
+ *          "title":"partial",
+ *          "content":"partial",
+ *          "author":"exact"
+ *
+ *     }
+ * )
+
+ Property Filter:
+ {{url}}/api/blog_posts?properties[]=id&properties[]=title
+ {{url}}/api/blog_posts?properties[]=id
+
+ whiteList indica las propiedades que puede agregar o quitar en el request.
+ parameterName: indica el nombre de la propiedad que pondremos en el request.
+
+ * @ApiFilter(
+  *     PropertyFilter::class,
+  *     arguments={
+  *       "parameterName": "properties",
+  *       "overrideDefaultProperties": false,
+  *       "whitelist": {"id","author","slug","title","content"}
+  *     }
+  * )
+
+#----------------------------------- Loggin ----------------------------#
+
+Install monolog loggin
+
+1) composer require symfony/monolog-bundle
+2) Definir nuevo channels
+    a) crear monolog.yaml en config/packages/monolog.yaml
+        monolog:
+          channels: ['token_confirmation']
+3) Validar que exista el channels
+    php bin/console debug:container log
+    Result:
+        [53] monolog.logger.token_confirmation
+
+    -> press 53 entry
+
+    Information for Service "monolog.logger.token_confirmation"
+    ===========================================================
+
+     ---------------- -----------------------------------
+      Option           Value
+     ---------------- -----------------------------------
+      Service ID       monolog.logger.token_confirmation
+      Class            Symfony\Bridge\Monolog\Logger
+      Tags             -
+      Calls            pushHandler, pushHandler
+      Public           yes
+      Synthetic        no
+      Lazy             no
+      Shared           yes
+      Abstract         no
+      Autowired        no
+      Autoconfigured   no
+     ---------------- -----------------------------------
+
+4) Inyectar logger al servicio de  UserConfirmService
+   en config/services.yaml definir:
+
