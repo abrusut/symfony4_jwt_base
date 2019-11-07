@@ -116,7 +116,7 @@
         transform: scale(0.95);
     }
 
-    input[type=text] {
+    input[type=text], [type=password] {
         background-color: #f6f6f6;
         border: none;
         color: #0d0d0d;
@@ -267,6 +267,12 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <div class="wrapper fadeInDown">
+    {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error.messageKey|trans(error.messageData, 'security') }}
+        </div>
+
+    {% endif %}
     <div id="formContent">
         <!-- Tabs Titles -->
 
@@ -277,8 +283,8 @@
 
         <!-- Login Form -->
         <form action="{{ path('security_login') }}" method="post">
-            <input type="text" id="username" class="fadeIn second" name="_username" placeholder="login">
-            <input type="text" id="password" class="fadeIn third" name="_password" placeholder="password">
+            <input type="text" id="username" value="{{ last_username }}" class="fadeIn second" name="_username" placeholder="login">
+            <input type="password" id="password" class="fadeIn third" name="_password" placeholder="password">
             <input type="submit" class="fadeIn fourth" value="Log In">
 
             <input type="hidden" id="_csrf_token"  name="_csrf_token" value="{{ csrf_token('authenticate') }}" placeholder="login">
@@ -289,6 +295,7 @@
         <div id="formFooter">
             <a class="underlineHover" href="#">Forgot Password?</a>
         </div>
+
 
     </div>
 </div>

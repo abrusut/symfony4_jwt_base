@@ -68,7 +68,7 @@ class User implements UserInterface
     const ROLE_USER = 'ROLE_USER';
     const ROLE_VIEWER = 'ROLE_VIEWER';
     const ROLE_ADMIN = 'ROLE_ADMIN';
-    const ROLE_SUPERADMIN = 'ROLE_SUPERADMIN';
+    const ROLE_SUPERADMIN = 'ROLE_SUPER_ADMIN';
 
     const DEFAULT_ROLES = [self::ROLE_VIEWER];
 

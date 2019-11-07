@@ -32,10 +32,11 @@ security:
             form_login:
                 check_path: security_login # define in AdminSecurityController
                 login_path: security_login # define in AdminSecurityController
-                default_target_path: admin
+                default_target_path: easyadmin
                 use_referer: true
             logout:
                 path: security_logout # define in AdminSecurityController
+                target: security_login
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
@@ -47,7 +48,7 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/login,     roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin,     roles: ROLE_SUPERADMIN }
+        - { path: ^/admin,     roles: [ROLE_SUPER_ADMIN, ROLE_ADMIN ]}
         - { path: ^/api,       roles: IS_AUTHENTICATED_ANONYMOUSLY }
     role_hierarchy:
         ROLE_USER: ROLE_VIEWER
