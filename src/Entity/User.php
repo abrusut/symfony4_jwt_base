@@ -112,7 +112,10 @@ class User implements UserInterface
      * @Assert\NotBlank(groups={"post"})
      *  @Assert\Expression(
      *          "this.getPassword() === this.getRetypedPassword()",
-     *     message="Las passwords no son iguales")
+     *     message="Las passwords no son iguales",
+     *     groups={"post"}
+     * )
+     *
      */
     private $retypedPassword;
 
@@ -189,7 +192,7 @@ class User implements UserInterface
     /**
      * @Groups({"put-reset-password"})
      * @Assert\NotBlank(groups={"put-reset-password"})
-     * @UserPassword(groups={"put-reset-password"})
+     * @UserPassword(groups={"put-reset-password"}, message="Password Actual Incorrecto")
      */
     private $oldPassword;
     
