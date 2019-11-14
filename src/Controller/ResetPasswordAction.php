@@ -2,12 +2,15 @@
 
 namespace App\Controller;
 
+use ApiPlatform\Core\Bridge\Symfony\Validator\Exception\ValidationException;
 use ApiPlatform\Core\Validator\ValidatorInterface;
 use App\Entity\User;
+use App\Exception\CustomValidationException;
 use Doctrine\ORM\EntityManagerInterface;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
 
 /**
  * Este controller tiene su ruta definida en la clase App\Entity\User.php
@@ -56,8 +59,18 @@ class ResetPasswordAction
          * El validador ejecuta todos los constraint (Assert) definidos en la entidad, en este caso App\Entity\User.php
          * Si no cumple alguna propiedad tira una excepcion
         **/
-        $this->validator->validate($user);
+        $this->validator->validate($user,  ['groups'=>'put-reset-password']);
     
+        /**
+         * Parche el validate de arriba al hacer reset password no compara que User->newPassword() === User->getNewRetypedPassword()
+         */
+        if( $user->getNewPassword() !== $user->getNewRetypedPassword() )
+        {
+            
+            throw new CustomValidationException("Las passwords deben ser iguales", 400);
+        }
+        
+        
         $user->setPassword(
             $this->userPasswordEncoder->encodePassword(
                 $user, $user->getNewPassword()

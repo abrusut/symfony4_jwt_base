@@ -15,11 +15,12 @@ security:
             security: false
         api:
             pattern: ^/api
-            stateless: true
+            stateless: true #no guarda cookies solo devuelve el token
             anonymous: true
             json_login:
                 check_path: /api/login_check
-                success_handler: lexik_jwt_authentication.handler.authentication_success
+                #success_handler: lexik_jwt_authentication.handler.authentication_success
+                success_handler: App\Security\Http\Authentication\AuthenticationSuccessHandler
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
             guard:
                 authenticators:

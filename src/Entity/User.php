@@ -37,14 +37,20 @@ use App\Controller\ResetPasswordAction;
  *                    "access_control"="is_granted('IS_AUTHENTICATED_FULLY') and object == user",
  *                     "method"="PUT",
  *                      "path"="/users/{id}/reset-password",
- *                      "controller"=ResetPasswordAction::class,
+ *                      "controller"=ResetPasswordAction::class,*
  *                      "denormalization_context"={
  *                            "groups" = { "put-reset-password" }
- *                      },
- *                      "validation_groups"={ "put-reset-password" }
+ *                      }
+ *
  *              }
  *     },
  *      collectionOperations={
+ *              "get"={
+ *                      "access_control"="is_granted('ROLE_SUPER_ADMIN')",
+ *                       "normalization_context"={
+ *                            "groups" = { "get" }
+ *                      }
+ *               },
  *              "post" = {
  *                       "access_control"="is_granted('IS_AUTHENTICATED_ANONYMOUSLY')",
  *                       "denormalization_context"={
@@ -52,8 +58,8 @@ use App\Controller\ResetPasswordAction;
  *                      },
  *                      "normalization_context"={
  *                            "groups" = { "get" }
- *                      },
- *                      "validation_groups"={ "post" }
+ *                      }
+ *
  *
  *                  }
  *      },
@@ -94,7 +100,8 @@ class User implements UserInterface
      * @Assert\NotBlank(groups={"post"})
      * @Assert\Regex(
      *     pattern="/(?=.*[A-Z])(?=.*[a-z)(?=.*[0-9]).{7,}/",
-     *     message="Password debe tener 7 caracteres, 1 mayuscula y 1 numero"
+     *     message="Password debe tener 7 caracteres, 1 mayuscula y 1 numero",
+     *     groups={"post"}
      *
      * )
      */
@@ -103,10 +110,9 @@ class User implements UserInterface
     /**
      * @Groups({"post"})
      * @Assert\NotBlank(groups={"post"})
-     * @Assert\Expression(
+     *  @Assert\Expression(
      *          "this.getPassword() === this.getRetypedPassword()",
-     *          message="Las passwords no son iguales",
-     * )
+     *     message="Las passwords no son iguales")
      */
     private $retypedPassword;
 
@@ -174,8 +180,9 @@ class User implements UserInterface
      * @Assert\NotBlank(groups={"put-reset-password"})
      * @Assert\Expression(
      *          "this.getNewPassword() === this.getNewRetypedPassword()",
-     *     message="Las passwords no son iguales"),
-     *       groups={"put-reset-password"}
+     *          message="Las passwords no son iguales"),
+     *  groups={"put-reset-password"}
+     *
      */
     private $newRetypedPassword;
     
