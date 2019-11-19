@@ -33,6 +33,15 @@ use App\Controller\ResetPasswordAction;
  *                            "groups" = { "get" }
  *                      }
  *              },
+ *           "put-with-avatar"={
+ *                    "access_control"="is_granted('IS_AUTHENTICATED_FULLY') and object == user",
+ *                      "denormalization_context"={
+ *                            "groups" = { "put-with-avatar" }
+ *                      },
+ *                   "normalization_context"={
+ *                            "groups" = { "get" }
+ *                      }
+ *              },
  *              "put-reset-password"={
  *                    "access_control"="is_granted('IS_AUTHENTICATED_FULLY') and object == user",
  *                     "method"="PUT",
@@ -201,6 +210,13 @@ class User implements UserInterface
      */
     private $passwordChangeDate;
     
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\ImageAvatar")
+     * @ORM\JoinColumn(name="avatar_id", referencedColumnName="id")
+     * @Groups({"put-with-avatar","get-user-with-image"})
+     */
+    private $avatar;
+    
     public function __construct()
     {
         $this->posts = new ArrayCollection();
@@ -208,6 +224,20 @@ class User implements UserInterface
         $this->roles = self::DEFAULT_ROLES;
         $this->enabled = false;
         $this->confirmationToken = null;
+    }
+    
+   
+    public function getAvatar(): ?ImageAvatar
+    {
+        return $this->avatar;
+    }
+    
+    /**
+     * @param ImageAvatar $avatar
+     */
+    public function setAvatar(ImageAvatar $avatar): void
+    {
+        $this->avatar = $avatar;
     }
     
     public function __toString(): string

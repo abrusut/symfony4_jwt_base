@@ -4,7 +4,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Controller\UploadImageAction;
+use App\Controller\UploadImageAvatarAction;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -12,6 +12,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity()
+ * @ORM\Table(name="image")
  * @Vich\Uploadable()
  * @ApiResource(
  *     attributes={"order"={"id" : "DESC" }},
@@ -19,14 +20,14 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
             "get",
  *          "post"={
  *              "method"="POST",
- *              "path"="/images",
- *              "controller"=UploadImageAction::class,
+ *              "path"="/images/usuarios",
+ *              "controller"=UploadImageAvatarAction::class,
  *              "defaults"={"_api_receive"=false}
  *          }
  *     }
  * )
  */
-class Image
+class ImageAvatar
 {
     /**
      * @ORM\Id()
@@ -36,9 +37,9 @@ class Image
     private $id;
     
     /**
-     * "images" => es el nombre de la propiedad configurada en vich_uploader.yaml
+     * "imagesAvatar" => es el nombre de la propiedad configurada en vich_uploader.yaml
      * "url" debe ser una propiedad de la misma clase
-     * @Vich\UploadableField(mapping="images", fileNameProperty="url")
+     * @Vich\UploadableField(mapping="imagesAvatar", fileNameProperty="url")
      * @Assert\NotNull()
      */
     private $file;
