@@ -49,6 +49,12 @@ class Image
      */
     private $url;
     
+    /**
+     * @ORM\Column(nullable=true)
+     *  @Groups({"get-blog-post-with-author", "get-user-with-image"})
+     */
+    private $tipoEntidad;
+    
     public function __toString(): string
     {
         return $this->getId() . ':' . $this->getUrl();

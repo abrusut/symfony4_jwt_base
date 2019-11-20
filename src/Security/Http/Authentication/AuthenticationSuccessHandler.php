@@ -2,7 +2,9 @@
 
 namespace App\Security\Http\Authentication;
 
+use App\Entity\ImageAvatar;
 use App\Entity\User;
+use App\Exception\CustomValidationException;
 use Lexik\Bundle\JWTAuthenticationBundle\Event\AuthenticationSuccessEvent;
 use Lexik\Bundle\JWTAuthenticationBundle\Events;
 use Lexik\Bundle\JWTAuthenticationBundle\Response\JWTAuthenticationSuccessResponse;
@@ -54,8 +56,16 @@ class AuthenticationSuccessHandler implements AuthenticationSuccessHandlerInterf
     
         /** @var User $userLogged */
         $userLogged = $this->tokenStorage->getToken()->getUser();
+        if(is_null($userLogged) || !is_object($userLogged) || !$userLogged instanceof User) {
+            throw new CustomValidationException("No se pudo obtener el usuario");
+        }
+    
+        $avatarUser = null;
+        if(!is_null($userLogged->getAvatar()) && is_object($userLogged->getAvatar()))
+            $avatarUser = $userLogged->getAvatar()->getUrl();
         
         $response = new JWTAuthenticationSuccessResponse($jwt);
+        
         
         $payload = array(
             'token' => $jwt,
@@ -65,6 +75,7 @@ class AuthenticationSuccessHandler implements AuthenticationSuccessHandlerInterf
                 'name'=>$userLogged->getName(),
                 'email' => $userLogged->getEmail(),
                 'roles' => $userLogged->getRoles(),
+                'avatar' => $avatarUser
             )
         );
         

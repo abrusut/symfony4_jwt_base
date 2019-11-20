@@ -12,18 +12,19 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity()
- * @ORM\Table(name="image")
+ * @ORM\Table(name="image_avatar")
  * @Vich\Uploadable()
  * @ApiResource(
  *     attributes={"order"={"id" : "DESC" }},
  *     collectionOperations={
-            "get",
+ *           "get",
  *          "post"={
  *              "method"="POST",
- *              "path"="/images/usuarios",
+ *              "path"="/images/{tipoEntidad}/{id}",
  *              "controller"=UploadImageAvatarAction::class,
  *              "defaults"={"_api_receive"=false}
  *          }
+ *
  *     }
  * )
  */
@@ -49,6 +50,12 @@ class ImageAvatar
      *  @Groups({"get-blog-post-with-author", "get-user-with-image"})
      */
     private $url;
+    
+    /**
+     * @ORM\Column(nullable=true)
+     *  @Groups({"get-blog-post-with-author", "get-user-with-image"})
+     */
+    private $tipoEntidad;
     
     public function __toString(): string
     {
@@ -92,7 +99,7 @@ class ImageAvatar
      */
     public function getUrl()
     {
-        return '/images/'.$this->url;
+        return '/images/'.$this->tipoEntidad.'/'.$this->url;
     }
     
     /**
@@ -101,6 +108,22 @@ class ImageAvatar
     public function setUrl($url): void
     {
         $this->url = $url;
+    }
+    
+    /**
+     * @return mixed
+     */
+    public function getTipoEntidad()
+    {
+        return $this->tipoEntidad;
+    }
+    
+    /**
+     * @param mixed $tipoEntidad
+     */
+    public function setTipoEntidad($tipoEntidad): void
+    {
+        $this->tipoEntidad = $tipoEntidad;
     }
     
     
