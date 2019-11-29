@@ -11,13 +11,13 @@ api_platform:
     collection:
         pagination:
             #enabled: false #Anula la paginacion global para todos los recursos
-            #client_enabled: true  #Habilita que el cliente pueda activar o no la paginacion
-            #enabled_parameter_name: pagination #nombre que debera poner el cliente en la URL para activar/desactivar paginacion
+            client_enabled: true  #Habilita que el cliente pueda activar o no la paginacion
+            enabled_parameter_name: pagination #nombre que debera poner el cliente en la URL para activar/desactivar paginacion
             items_per_page: 10
             client_items_per_page: false # Habilita/Deshabilita que el cliente pueda indicar la cantidad de registros por paginas
             items_per_page_parameter_name: size # nombre que debera poner el cliente para indicar la cantidad de registros por paginas
             maximum_items_per_page: 20
-            partial: false # Saca de la paginacion el dato de total de registros y page anterior, primera y ultima pagina. Esto evita los query de tipo count(*) y lo hace mas performante
+            partial: false # (true) Saca de la paginacion el dato de total de registros y page anterior, primera y ultima pagina. Esto evita los query de tipo count(*) y lo hace mas performante
             client_partial: true
             partial_parameter_name: 'partial'
     exception_to_status:

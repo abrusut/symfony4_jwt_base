@@ -2,7 +2,10 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
+use App\Controller\UserGlobalFilterAction;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -13,10 +16,47 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Controller\ResetPasswordAction;
 
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
 
 // get-with-author se define el grupo en Comment para evitar loop infinito
 /**
+ * @ApiFilter(
+ *     OrderFilter::class,
+ *     properties={
+ *              "id",
+ *              "username",
+ *              "name",
+ *              "email"
+ *     },
+ *     arguments={"orderParameterName"="_order"}
+ * )
+ * @ApiFilter(
+ *     RangeFilter::class,
+ *     properties={
+ *              "id"
+ *     }
+ * )
+ * @ApiFilter(BooleanFilter::class, properties={"enabled"})
+ * @ApiFilter(
+ *     SearchFilter::class,
+ *     properties={
+ *           "id": "exact",
+ *          "username":"partial",
+ *          "name":"partial",
+ *          "email":"partial"
+ *     }
+ * )
  * @ApiResource(
+ *     attributes={"order"={"id" : "DESC" },
+ *                 "pagination_enabled"=true,
+ *                 "pagination_client_enabled"=true,
+ *                  "pagination_client_items_per_page"=true,
+ *                  "maximum_items_per_page"=30
+ *      },
  *      itemOperations={
  *              "get"={
  *                      "access_control"="is_granted('IS_AUTHENTICATED_FULLY')",
@@ -46,6 +86,12 @@ use App\Controller\ResetPasswordAction;
  *              }
  *     },
  *      collectionOperations={
+ *              "get-global-search"={
+ *                      "method"="GET",
+ *                      "path"="/users/globalFilter",
+ *                      "controller"=UserGlobalFilterAction::class,
+ *                      "defaults"={"_api_receive"=false}
+ *               },
  *              "get"={
  *                      "access_control"="is_granted('ROLE_SUPER_ADMIN')",
  *                       "normalization_context"={
@@ -119,8 +165,8 @@ class User implements UserInterface
      *
      */
     private $retypedPassword;
-
-
+    
+    
     /**
      * @Groups({"get","put", "post", "get-comment-with-author","get-blog-post-with-author"})
      * @ORM\Column(type="string", length=255)
@@ -151,12 +197,13 @@ class User implements UserInterface
     private $comments;
 
     /**
-     * @Groups({"put", "post"})
+     * @Groups({"put", "post","get-admin", "get-owner"  })
      * @ORM\Column(type="boolean")
      */
     private $enabled;
     
     /**
+     * @Groups({"get-admin", "get-owner"  })
      * @ORM\Column(type="string", length=40, nullable=true)
      */
     private $confirmationToken;
