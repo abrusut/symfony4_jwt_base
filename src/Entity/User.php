@@ -29,7 +29,7 @@ use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
  *     properties={
  *              "id",
  *              "username",
- *              "name",
+ *              "fullName",
  *              "email"
  *     },
  *     arguments={"orderParameterName"="_order"}
@@ -46,7 +46,7 @@ use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
  *     properties={
  *           "id": "exact",
  *          "username":"partial",
- *          "name":"partial",
+ *          "fullName":"partial",
  *          "email":"partial"
  *     }
  * )
@@ -173,7 +173,7 @@ class User implements UserInterface
      * @Assert\NotBlank(groups={"post", "put"})
      * @Assert\Length(min=3, max=255, groups={"post","put"})
      */
-    private $name;
+    private $fullName;
 
     /**
      * @Groups({"put", "post", "get-admin", "get-owner"})
@@ -281,7 +281,7 @@ class User implements UserInterface
     
     public function __toString(): string
     {
-        return $this->getName();
+        return $this->getFullName();
     }
 
     public function getId(): ?int
@@ -312,19 +312,24 @@ class User implements UserInterface
 
         return $this;
     }
-
-
-    public function getName(): ?string
+    
+    /**
+     * @return mixed
+     */
+    public function getFullName()
     {
-        return $this->name;
+        return $this->fullName;
+    }
+    
+    /**
+     * @param mixed $fullName
+     */
+    public function setFullName($fullName): void
+    {
+        $this->fullName = $fullName;
     }
 
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
+    
 
     public function getEmail(): ?string
     {

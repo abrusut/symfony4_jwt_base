@@ -72,7 +72,7 @@ class AuthenticationSuccessHandler implements AuthenticationSuccessHandlerInterf
             'user' =>  array(
                 'id' => $userLogged->getId(),
                 'username'=>$userLogged->getUsername(),
-                'name'=>$userLogged->getName(),
+                'fullName'=>$userLogged->getFullName(),
                 'email' => $userLogged->getEmail(),
                 'roles' => $userLogged->getRoles(),
                 'avatar' => $avatarUser
