@@ -22,6 +22,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
 
+// "access_control"="is_granted('IS_AUTHENTICATED_FULLY') and object == user",
 // get-with-author se define el grupo en Comment para evitar loop infinito
 /**
  * @ApiFilter(
@@ -65,7 +66,7 @@ use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
  *                      }
  *               },
  *              "put"={
- *                    "access_control"="is_granted('IS_AUTHENTICATED_FULLY') and object == user",
+ *                       "access_control"="is_granted('IS_AUTHENTICATED_FULLY')",
  *                      "denormalization_context"={
  *                            "groups" = { "put" }
  *                      },
@@ -86,7 +87,9 @@ use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
  *              }
  *     },
  *      collectionOperations={
+ *
  *              "get-global-search"={
+ *                       "access_control"="is_granted('IS_AUTHENTICATED_FULLY')",
  *                      "method"="GET",
  *                      "path"="/users/globalFilter",
  *                      "controller"=UserGlobalFilterAction::class,
@@ -211,7 +214,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="simple_array", length=200)
-     * @Groups({"get-admin", "get-owner"})
+     * @Groups({"put","get-admin", "get-owner"})
      */
     private $roles;
     
