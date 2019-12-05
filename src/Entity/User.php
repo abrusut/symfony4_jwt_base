@@ -76,7 +76,7 @@ use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
  *              },
  *
  *              "put-reset-password"={
- *                    "access_control"="is_granted('IS_AUTHENTICATED_FULLY') and object == user",
+ *                    "access_control"="is_granted('IS_AUTHENTICATED_FULLY') and object == user || is_granted('ROLE_SUPER_ADMIN')",
  *                     "method"="PUT",
  *                      "path"="/users/{id}/reset-password",
  *                      "controller"=ResetPasswordAction::class,*
@@ -268,6 +268,31 @@ class User implements UserInterface
         $this->confirmationToken = null;
     }
     
+    /**
+     * @Groups({"get","get-user-with-image"})
+     * @return string
+     */
+    public function getPasswordChangeDateFormated(): string{
+        $fecha = "";
+        if(!is_null($this->getPasswordChangeDate())){
+            $fecha =
+                gmstrftime ("%d-%m-%Y %T", $this->getPasswordChangeDate());
+        }
+        
+        return $fecha;
+    }
+
+
+    /**
+     * @Groups({"get","get-user-with-image"})
+     * @return string
+     */
+    public function getAvatarUrl(): string{
+        $avatarUser = "";
+        if(!is_null($this->getAvatar()) && is_object($this->getAvatar()))
+            $avatarUser = $this->getAvatar()->getUrl();
+        return $avatarUser;
+    }
    
     public function getAvatar(): ?ImageAvatar
     {
