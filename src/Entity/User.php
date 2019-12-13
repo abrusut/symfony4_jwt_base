@@ -56,7 +56,8 @@ use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
  *                 "pagination_enabled"=true,
  *                 "pagination_client_enabled"=true,
  *                  "pagination_client_items_per_page"=true,
- *                  "maximum_items_per_page"=30
+ *                  "maximum_items_per_page"=30,
+ *                  "enable_max_depth"=true
  *      },
  *      itemOperations={
  *              "get"={

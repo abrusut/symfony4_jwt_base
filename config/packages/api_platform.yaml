@@ -1,4 +1,16 @@
 api_platform:
+    # The title of the API.
+    title: 'Symfony 4 JWT Base Ministerio Produccion'
+
+    # The description of the API.
+    description: 'Symfony 4 JWT Base Ministerio Produccion'
+
+    # The version of the API.
+    version: '0.0.1'
+
+    # Specify a path name generator to use.
+    path_segment_name_generator: 'api_platform.path_segment_name_generator.dash'
+
     mapping:
         paths: ['%kernel.project_dir%/src/Entity']
     swagger:
